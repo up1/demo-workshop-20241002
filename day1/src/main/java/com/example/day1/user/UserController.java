@@ -1,5 +1,6 @@
 package com.example.day1.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,16 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/user/{id}")
     public UserResponse getById(@PathVariable int id) {
-        if(id == 2) {
-            throw new UserNotFoundException("User id =" + id + " not found");
-        }
-        UserResponse userResponse = new UserResponse();
-        userResponse.setId(id);
-        userResponse.setFname("Somkiat");
-        userResponse.setLname("Pui");
-        return userResponse;
+        return userService.get(id);
     }
 
 }
