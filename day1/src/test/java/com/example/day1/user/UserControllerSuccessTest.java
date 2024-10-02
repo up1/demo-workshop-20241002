@@ -17,7 +17,7 @@ class UserControllerSuccessTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    @DisplayName("Success with get user by id=2")
+    @DisplayName("Success with get user by id=1")
     void getById() {
         // Act
         UserResponse result = restTemplate.getForObject("/user/1", UserResponse.class);
