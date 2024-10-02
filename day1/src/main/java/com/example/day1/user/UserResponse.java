@@ -30,13 +30,4 @@ public class UserResponse{
 		return id;
 	}
 
-	@Override
- 	public String toString(){
-		return 
-			"UserResponse{" + 
-			"fname = '" + fname + '\'' + 
-			",lname = '" + lname + '\'' + 
-			",id = '" + id + '\'' + 
-			"}";
-		}
 }
