@@ -25,4 +25,18 @@ public class UserService {
         userResponse.setLname(result.get().getLastName());
         return userResponse;
     }
+
+    public UserResponse create(CreateUserRequest request) {
+        MyUser newUser = new MyUser();
+        newUser.setFirstName(request.getFname());
+        newUser.setLastName(request.getLname());
+        newUser.setAge(request.getAge());
+        newUser = userRepository.saveAndFlush(newUser);
+
+        UserResponse userResponse = new UserResponse();
+        userResponse.setId(Math.toIntExact(newUser.getId()));
+        userResponse.setFname(newUser.getFirstName());
+        userResponse.setLname(newUser.getLastName());
+        return userResponse;
+    }
 }

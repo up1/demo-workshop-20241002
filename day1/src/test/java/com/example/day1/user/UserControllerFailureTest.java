@@ -1,6 +1,7 @@
 package com.example.day1.user;
 
 import com.example.day1.global.ErrorResponse;
+import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,14 @@ class UserControllerFailureTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
     @DisplayName("Failure with get user by id=2 => 404 User not found")
     void case01() {
+        // Arrange
+        userRepository.deleteAll();
         // Act
         ResponseEntity<ErrorResponse> result = restTemplate.getForEntity("/user/2", ErrorResponse.class);
         // Assert

@@ -31,4 +31,20 @@ class UserRepositoryTest {
         assertEquals("Somkiat", result.get().getFirstName());
     }
 
+    @Test
+    @DisplayName("Success with create a new user")
+    public void case02(){
+        // Arrange
+        MyUser dummy = new MyUser();
+        dummy.setFirstName("Somkiat");
+        dummy.setLastName("Pui");
+        // Act
+        dummy = userRepository.saveAndFlush(dummy);
+
+        // Assert
+        assertNotNull(dummy.getId());
+    }
+
+
+
 }

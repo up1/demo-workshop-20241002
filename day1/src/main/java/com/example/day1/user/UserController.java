@@ -1,5 +1,6 @@
 package com.example.day1.user;
 
+import com.example.day1.demo.DemoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,7 @@ public class UserController {
         System.out.println(createUserRequest);
         // 1. Validate input
         // 2. Call create() in User service
-        UserResponse userResponse = new UserResponse();
-        userResponse.setId(1);
-        userResponse.setFname(createUserRequest.getFname());
+        UserResponse userResponse = userService.create(createUserRequest);
         return userResponse;
     }
 

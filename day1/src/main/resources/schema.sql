@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS my_user (
-    id int(10) PRIMARY KEY,
+    id int(10) PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(256) NOT NULL,
     last_name VARCHAR(256) NOT NULL,
     age int(10),

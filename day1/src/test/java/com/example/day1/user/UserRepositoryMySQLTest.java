@@ -37,7 +37,6 @@ class UserRepositoryMySQLTest {
     public void case01() {
         // Arrange
         MyUser dummy = new MyUser();
-        dummy.setId(1L);
         dummy.setFirstName("Somkiat");
         dummy.setLastName("Pui");
         userRepository.saveAndFlush(dummy);
