@@ -1,5 +1,8 @@
 package com.example.day1.user;
 
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,10 +12,6 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers
@@ -28,7 +27,7 @@ class UserRepositoryMySQLTest {
         registry.add("spring.datasource.driverClassName", () -> mySQLContainer.getDriverClassName());
         registry.add("spring.datasource.username", () -> mySQLContainer.getUsername());
         registry.add("spring.datasource.password", () -> mySQLContainer.getPassword());
-        registry.add("spring.flyway.enabled", () -> "true");
+        registry.add("spring.sql.init.mode", () -> "always");
     }
 
     @Autowired
