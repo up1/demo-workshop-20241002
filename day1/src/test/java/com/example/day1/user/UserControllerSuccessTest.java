@@ -34,4 +34,17 @@ class UserControllerSuccessTest {
         assertEquals("Somkiat", result.getFname());
         assertEquals("Pui", result.getLname());
     }
+
+    @Test
+    @DisplayName("Success with create a new user")
+    void case02() {
+        // Arrange
+        CreateUserRequest newUser = new CreateUserRequest();
+        newUser.setFname("Demo fname");
+        // Act
+        UserResponse result = restTemplate.postForObject("/user", newUser, UserResponse.class);
+        // Assert
+        assertEquals(1, result.getId());
+        assertEquals("Demo fname", result.getFname());
+    }
 }

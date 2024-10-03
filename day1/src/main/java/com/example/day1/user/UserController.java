@@ -20,7 +20,12 @@ public class UserController {
     @PostMapping("/user")
     public UserResponse createNewUser(@RequestBody CreateUserRequest createUserRequest) {
         System.out.println(createUserRequest);
-        return new UserResponse();
+        // 1. Validate input
+        // 2. Call create() in User service
+        UserResponse userResponse = new UserResponse();
+        userResponse.setId(1);
+        userResponse.setFname(createUserRequest.getFname());
+        return userResponse;
     }
 
 }
