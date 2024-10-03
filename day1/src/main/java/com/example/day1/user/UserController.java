@@ -1,8 +1,6 @@
 package com.example.day1.user;
 
-import com.example.day1.demo.DemoService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

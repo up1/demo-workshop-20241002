@@ -1,7 +1,6 @@
 package com.example.day1.user;
 
 import com.example.day1.global.ErrorResponse;
-import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
