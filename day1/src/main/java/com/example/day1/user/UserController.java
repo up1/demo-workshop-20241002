@@ -1,5 +1,6 @@
 package com.example.day1.user;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,8 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public UserResponse createNewUser(@RequestBody CreateUserRequest createUserRequest) {
+    public UserResponse createNewUser(
+            @Valid  @RequestBody CreateUserRequest createUserRequest) {
         System.out.println(createUserRequest);
         // 1. Validate input
         // 2. Call create() in User service

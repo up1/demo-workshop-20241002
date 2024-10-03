@@ -1,6 +1,9 @@
 package com.example.day1.user;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class CreateUserRequest{
+	@NotBlank
 	private String fname;
 	private String lname;
 	private int age;
