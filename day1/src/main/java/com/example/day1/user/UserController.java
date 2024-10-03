@@ -1,9 +1,7 @@
 package com.example.day1.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -17,6 +15,12 @@ public class UserController {
     @GetMapping("/user/{id}")
     public UserResponse getById(@PathVariable int id) {
         return userService.get(id);
+    }
+
+    @PostMapping("/user")
+    public UserResponse createNewUser(@RequestBody CreateUserRequest createUserRequest) {
+        System.out.println(createUserRequest);
+        return new UserResponse();
     }
 
 }
