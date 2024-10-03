@@ -45,6 +45,20 @@ class UserRepositoryTest {
         assertNotNull(dummy.getId());
     }
 
+    @Test
+    @DisplayName("Search by first name")
+    public void case03(){
+        // Arrange
+        MyUser dummy = new MyUser();
+        dummy.setFirstName("Somkiat");
+        dummy.setLastName("Pui");
+        userRepository.saveAndFlush(dummy);
+        // Act
+        Optional<MyUser> result =  userRepository.findByFirstName("Somkiat");
+        // Assert
+        assertEquals("Somkiat", result.get().getFirstName());
+    }
+
 
 
 }
