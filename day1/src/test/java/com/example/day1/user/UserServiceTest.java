@@ -12,10 +12,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserServiceTest {
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
     @DisplayName("Success case")
     void case01() {
+        // Arrange
+        MyUser dummy = new MyUser();
+        dummy.setId(1L);
+        dummy.setFirstName("Somkiat");
+        dummy.setLastName("Pui");
+        userRepository.saveAndFlush(dummy);
         // Act
         UserResponse result = userService.get(1);
         // Assert

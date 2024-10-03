@@ -12,7 +12,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public UserResponse get(int id) {
-        Optional<MyUser> result =  userRepository.findById(1L);
+        Optional<MyUser> result =  userRepository.findById((long) id);
         if (result.isEmpty()) {
             throw new UserNotFoundException("User id =" + id + " not found");
         }
