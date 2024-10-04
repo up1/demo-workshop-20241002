@@ -1,6 +1,7 @@
 package com.example.day1.post;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,11 +10,17 @@ import java.util.Optional;
 @Component
 public class PostGateway {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
+    private final String postApiUrl;
+
+    public PostGateway(RestTemplate restTemplate,
+                       @Value("${post.api.url}") String postApiUrl) {
+        this.restTemplate = restTemplate;
+        this.postApiUrl = postApiUrl;
+    }
 
     public Optional<PostResponse> getById(int postId) {
-        String url = "http://localhost:9999/posts/" + postId;
+        String url = this.postApiUrl + "/posts/" + postId;
         try {
             PostResponse result = restTemplate.getForObject(url, PostResponse.class);
             return Optional.ofNullable(result);
