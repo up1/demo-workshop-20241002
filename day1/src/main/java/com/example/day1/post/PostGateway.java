@@ -25,6 +25,10 @@ public class PostGateway {
             PostResponse result = restTemplate.getForObject(url, PostResponse.class);
             return Optional.ofNullable(result);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            if("404 Not Found: [no body]".equals(e.getMessage())) {
+                return Optional.empty();
+            }
             throw new RuntimeException("PostGateway error!!");
         }
     }
