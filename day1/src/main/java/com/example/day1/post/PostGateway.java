@@ -13,7 +13,13 @@ public class PostGateway {
     private RestTemplate restTemplate;
 
     public Optional<PostResponse> getById(int postId) {
-        return Optional.empty();
+        String url = "https://jsonplaceholder.typicode.com/posts/" + postId;
+        try {
+            PostResponse result = restTemplate.getForObject(url, PostResponse.class);
+            return Optional.ofNullable(result);
+        } catch (Exception e) {
+            throw new RuntimeException("PostGateway error!!");
+        }
     }
 
 }
