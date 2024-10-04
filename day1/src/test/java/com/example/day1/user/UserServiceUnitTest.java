@@ -16,6 +16,9 @@ class UserServiceUnitTest {
     @Mock
     private UserRepository mockRepository;
 
+    @Mock
+    private Demo2 demo2;
+
     @Test
     void get() {
         // Arrange
@@ -24,7 +27,7 @@ class UserServiceUnitTest {
         u1.setFirstName("Mock fname");
         when(mockRepository.findById(1L))
                 .thenReturn(Optional.of(u1));
-        UserService service = new UserService(mockRepository);
+        UserService service = new UserService(mockRepository, demo2);
         // Act
         UserResponse result = service.get(1);
         // Assert
